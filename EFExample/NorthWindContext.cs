@@ -22,7 +22,7 @@ namespace Raw12_Assignment4_1
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLoggerFactory(MyLoggerFactory);
-            optionsBuilder.UseNpgsql("host=localhost;db=northwind;uid=postgres;pwd=Kiwikatte2");
+            optionsBuilder.UseNpgsql("host=localhost;db=northwind;uid=postgres;pwd=KaffeKop+1");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,7 +37,8 @@ namespace Raw12_Assignment4_1
             modelBuilder.Entity<Product>().Property(x => x.Name).HasColumnName("productname");
             modelBuilder.Entity<Product>().Property(x => x.UntPrice).HasColumnName("unitprice");
             modelBuilder.Entity<Product>().Property(x => x.QuantityPerUnit).HasColumnName("quantityperunit");
-            modelBuilder.Entity<Product>().Property(x => x.UnitsInStock).HasColumnName("unitprice");
+            modelBuilder.Entity<Product>().Property(x => x.UnitsInStock).HasColumnName("unitsinstock");
+            modelBuilder.Entity<Product>().Property(x => x.CategoryId).HasColumnName("categoryid");
 
             modelBuilder.Entity<Order>().ToTable("orders");
             modelBuilder.Entity<Order>().Property(x => x.OrderId).HasColumnName("orderid");
@@ -48,10 +49,12 @@ namespace Raw12_Assignment4_1
             modelBuilder.Entity<Order>().Property(x => x.ShipName).HasColumnName("shipname");
             modelBuilder.Entity<Order>().Property(x => x.ShipCity).HasColumnName("shipcity");
 
-            modelBuilder.Entity<OrderDetails>().ToTable("orderdetails").HasNoKey();
+            modelBuilder.Entity<OrderDetails>().ToTable("orderdetails").HasKey(x => new {x.OrderId, x.ProductId);
             modelBuilder.Entity<OrderDetails>().Property(x => x.UnitPrice).HasColumnName("unitprice");
             modelBuilder.Entity<OrderDetails>().Property(x => x.Quantity).HasColumnName("quantity");
             modelBuilder.Entity<OrderDetails>().Property(x => x.Discount).HasColumnName("discount");
+            modelBuilder.Entity<OrderDetails>().Property(x => x.OrderId).HasColumnName("orderid");
+            modelBuilder.Entity<OrderDetails>().Property(x => x.ProductId).HasColumnName("productid");
             
         }
     }

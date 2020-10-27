@@ -19,7 +19,9 @@ namespace Raw12_Assignment4_1
         public int OrderId { get; set; }
         public Order Order { get; set; }
 
-        //public Product Product { get;  set; }
+        public Product Product { get;  set; }
+
+        public int ProductId { get; set; }
 
         /*public override string ToString()
         {

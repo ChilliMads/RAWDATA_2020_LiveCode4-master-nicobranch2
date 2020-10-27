@@ -13,7 +13,7 @@ namespace Raw12_Assignment4_1
         public string ShipCity { get; set; }
 
         // navigation
-        public OrderDetails OrderDetails { get; set; }
+        //public OrderDetails OrderDetails { get; set; }
 
 
         

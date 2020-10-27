@@ -49,7 +49,7 @@ namespace Raw12_Assignment4_1
 
         //3
         // also some error
-        public IList<Order> ListAllOrders()
+        /*public IList<Order> ListAllOrders()
         {
             using var ctx = new NorthWindContext();
             return (IList<Order>)ctx.Orders
@@ -61,7 +61,7 @@ namespace Raw12_Assignment4_1
                     x.ShipCity
                 })
                 .ToList();
-        }
+        }*/
         //end Order methods
 
 
@@ -91,7 +91,28 @@ namespace Raw12_Assignment4_1
 
         // end Order details methodss
 
+        //6
+
+        public ProductList GetSinglePorductByID(int id)
+        {
+            var ctx = new NorthWindContext();
+            var result = ctx.Products.Include(x => x.Category)
+                .Select(x => new ProductList
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    UntPrice = x.UntPrice,
+                    CategoryName = x.Category.Name
+                })
+                .FirstOrDefault(x => x.Id == id);
+                   
+            Console.WriteLine(result);
+            return result;
+
+
+        }
 
     }
-    //test
+
+    
 }

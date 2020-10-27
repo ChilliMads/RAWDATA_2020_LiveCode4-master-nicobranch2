@@ -32,10 +32,10 @@ namespace Raw12_Assignment4_1
 
             // 3 list all orders
             // fix System.InvalidCastException: Unable to cast object of type
-            foreach (var elem in dataService.ListAllOrders())
+            /*foreach (var elem in dataService.ListAllOrders())
             {
                 Console.WriteLine(elem);
-            }
+            }*/
 
             //order end
 
@@ -83,6 +83,12 @@ namespace Raw12_Assignment4_1
             //    Console.WriteLine(category);
             //}
             // henrik examples end
+
+            //6 
+            foreach (var elem in dataService.GetSinglePorductByID(1))
+            {
+                Console.WriteLine(elem);
+            }
         }
     }
 }
